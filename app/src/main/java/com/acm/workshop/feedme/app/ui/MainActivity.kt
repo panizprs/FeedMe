@@ -1,4 +1,4 @@
-package com.acm.workshop.feedme.app
+package com.acm.workshop.feedme.app.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -3,6 +3,7 @@ package com.acm.workshop.feedme.app.ui.Albums
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.acm.workshop.feedme.app.ui.base.BaseViewModel
 import com.acm.workshop.feedme.data.model.Album
 import com.acm.workshop.feedme.domain.interactor.GetAlbumsUseCase
 import com.acm.workshop.feedme.remote.api.AlbumsApi
@@ -12,7 +13,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class AlbumsViewModel @Inject constructor(private val getAlbumsUseCase: GetAlbumsUseCase) : ViewModel(){
+class AlbumsViewModel @Inject constructor(private val getAlbumsUseCase: GetAlbumsUseCase) : BaseViewModel(){
 
     private val _albums = MutableLiveData<List<Album>>()
     val albums : LiveData<List<Album>> = _albums

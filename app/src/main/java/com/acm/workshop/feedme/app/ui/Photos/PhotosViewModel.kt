@@ -3,6 +3,7 @@ package com.acm.workshop.feedme.app.ui.Photos
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.acm.workshop.feedme.app.ui.base.BaseViewModel
 import com.acm.workshop.feedme.data.model.Photo
 import com.acm.workshop.feedme.domain.interactor.GetPhotosUseCase
 import com.acm.workshop.feedme.domain.interactor.GetPostsUseCase
@@ -14,7 +15,7 @@ import io.reactivex.rxkotlin.addTo
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class PhotosViewModel @Inject constructor(private val photosUseCase: GetPhotosUseCase) : ViewModel(){
+class PhotosViewModel @Inject constructor(private val photosUseCase: GetPhotosUseCase) : BaseViewModel(){
 
     private val _photos = MutableLiveData<List<Photo>>()
     val photos : LiveData<List<Photo>> = _photos

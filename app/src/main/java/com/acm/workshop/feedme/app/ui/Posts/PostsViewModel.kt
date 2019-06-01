@@ -3,11 +3,12 @@ package com.acm.workshop.feedme.app.ui.Posts
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.acm.workshop.feedme.app.ui.base.BaseViewModel
 import com.acm.workshop.feedme.data.model.Post
 import com.acm.workshop.feedme.domain.interactor.GetPostsUseCase
 import javax.inject.Inject
 
-class PostsViewModel @Inject constructor(private val getPostsUseCase: GetPostsUseCase)  : ViewModel(){
+class PostsViewModel @Inject constructor(private val getPostsUseCase: GetPostsUseCase)  : BaseViewModel(){
 
 
     private val _posts = MutableLiveData<List<Post>>()
