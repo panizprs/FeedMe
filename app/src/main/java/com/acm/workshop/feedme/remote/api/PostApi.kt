@@ -1,4 +1,4 @@
-package com.acm.workshop.feedme.remote
+package com.acm.workshop.feedme.remote.api
 
 
 import com.acm.workshop.feedme.data.model.Post

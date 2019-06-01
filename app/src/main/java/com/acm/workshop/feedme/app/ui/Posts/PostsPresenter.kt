@@ -1,6 +1,6 @@
 package com.acm.workshop.feedme.app.ui.Posts
 
-import com.acm.workshop.feedme.remote.PostApi
+import com.acm.workshop.feedme.remote.api.PostApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo

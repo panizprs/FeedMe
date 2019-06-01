@@ -1,8 +1,8 @@
 package com.acm.workshop.feedme.app.di
 
-import com.acm.workshop.feedme.remote.AlbumsApi
-import com.acm.workshop.feedme.remote.PhotosApi
-import com.acm.workshop.feedme.remote.PostApi
+import com.acm.workshop.feedme.remote.api.AlbumsApi
+import com.acm.workshop.feedme.remote.api.PhotosApi
+import com.acm.workshop.feedme.remote.api.PostApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

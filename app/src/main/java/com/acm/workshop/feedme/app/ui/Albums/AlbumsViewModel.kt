@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.acm.workshop.feedme.data.model.Album
-import com.acm.workshop.feedme.remote.AlbumsApi
+import com.acm.workshop.feedme.remote.api.AlbumsApi
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
