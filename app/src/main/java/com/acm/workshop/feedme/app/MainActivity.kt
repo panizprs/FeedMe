@@ -15,17 +15,17 @@ class MainActivity : AppCompatActivity() {
 
 
 
-//        supportFragmentManager.beginTransaction()
-//            .replace(R.id.content_frame, PostsFragment())
-//            .commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content_frame, PostsFragment())
+            .commit()
 
 //        supportFragmentManager.beginTransaction()
 //            .replace(R.id.content_frame, PhotosFragment())
 //            .commit()
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.content_frame, AlbumsFragment())
-            .commit()
+//        supportFragmentManager.beginTransaction()
+//            .replace(R.id.content_frame, AlbumsFragment())
+//            .commit()
     }
 
 

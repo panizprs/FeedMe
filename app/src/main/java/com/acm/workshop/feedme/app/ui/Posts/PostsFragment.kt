@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -18,8 +18,6 @@ import javax.inject.Inject
 
 
 class PostsFragment : Fragment() , PostsContract.View {
-    // TODO: Rename and change types of parameters
-
 
     @Inject
     lateinit var postsPresenter: PostsPresenter
@@ -57,12 +55,15 @@ class PostsFragment : Fragment() , PostsContract.View {
 
         postsViewModel.getPosts()
         postsViewModel.apply {
-            showPosts.observe(this@PostsFragment, Observer {posts ->
+            posts.observe(this@PostsFragment, Observer { posts ->
                 val loadingBar = view.findViewById<View>(R.id.loadingBar)
                 loadingBar?.visibility = View.GONE
 
 //        recyclerView?.layoutManager = LinearLayoutManager(context)
                 recyclerView.adapter = PostsAdapter(posts)
+            })
+            error.observe(this@PostsFragment, Observer{throwable ->
+                Toast.makeText(context, throwable.toString(), Toast.LENGTH_LONG).show()
             })
         }
     }
@@ -75,13 +76,6 @@ class PostsFragment : Fragment() , PostsContract.View {
         val recyclerView = view?.findViewById<RecyclerView>(R.id.recyclerview)
 //        recyclerView?.layoutManager = LinearLayoutManager(context)
         recyclerView?.adapter = PostsAdapter(posts)
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        postsViewModel.onDestroy()
     }
 
 }

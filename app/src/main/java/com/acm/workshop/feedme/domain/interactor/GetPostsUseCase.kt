@@ -7,8 +7,9 @@ import com.acm.workshop.feedme.domain.executor.UseCaseExecutorThread
 import com.acm.workshop.feedme.domain.interactor.base.SingleUseCase
 import com.acm.workshop.feedme.domain.repository.PostsRepository
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetPostsUseCase(
+class GetPostsUseCase @Inject constructor(
     private val postsRepository: PostsRepository,
     postExecutorThread: PostExecutorThread,
     useCaseExecutorThread: UseCaseExecutorThread

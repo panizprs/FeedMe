@@ -1,4 +1,4 @@
-package com.acm.workshop.feedme.app.di
+package com.acm.workshop.feedme.app.di.module
 
 import com.acm.workshop.feedme.remote.api.AlbumsApi
 import com.acm.workshop.feedme.remote.api.PhotosApi
@@ -45,28 +45,4 @@ class NetworkModule {
     companion object {
         const val BASE_URL: String = "https://jsonplaceholder.typicode.com"
     }
-}
-
-fun main(){
-
-    val retrofit = Retrofit.Builder()
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .addConverterFactory(GsonConverterFactory.create())
-        .baseUrl(NetworkModule.BASE_URL)
-        .client(OkHttpClient())
-        .build()
-
-    val photosApi = retrofit.create(PhotosApi::class.java)
-
-
-
-    photosApi.getPhotos().subscribe({photos ->
-        photos.forEach {photo ->
-            println(photo)
-        }
-    },{
-        println("error $it")
-    }
-    )
-
 }

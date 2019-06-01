@@ -1,9 +1,9 @@
 package com.acm.workshop.feedme.app
 
 import android.app.Application
-import com.acm.workshop.feedme.app.di.AppComponent
-import com.acm.workshop.feedme.app.di.AppModule
-import com.acm.workshop.feedme.app.di.DaggerAppComponent
+import com.acm.workshop.feedme.app.di.component.AppComponent
+import com.acm.workshop.feedme.app.di.module.AppModule
+import com.acm.workshop.feedme.app.di.component.DaggerAppComponent
 
 class MyApp : Application(){
 

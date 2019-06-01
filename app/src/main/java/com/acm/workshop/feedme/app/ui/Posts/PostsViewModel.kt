@@ -4,35 +4,28 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.acm.workshop.feedme.data.model.Post
-import com.acm.workshop.feedme.remote.api.PostApi
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.schedulers.Schedulers
+import com.acm.workshop.feedme.domain.interactor.GetPostsUseCase
 import javax.inject.Inject
 
-class PostsViewModel @Inject constructor(private val postApi: PostApi)  : ViewModel(){
-    private val disposables = CompositeDisposable()
+class PostsViewModel @Inject constructor(private val getPostsUseCase: GetPostsUseCase)  : ViewModel(){
 
-    private val _showPosts = MutableLiveData<List<Post>>()
-    val showPosts : LiveData<List<Post>> = _showPosts
+
+    private val _posts = MutableLiveData<List<Post>>()
+    val posts : LiveData<List<Post>> = _posts
+
+    private val _error = MutableLiveData<Throwable>()
+    val error : LiveData<Throwable> = _error
 
 
     fun getPosts() {
-        postApi.getPosts()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({list ->
-                println(list.size)
-                //                println(list)
-                _showPosts.value = list
-            },{
-                println("error: $it")
-            }).addTo(disposables)
+        getPostsUseCase.execute(GetPostsUseCase.None(), ::success, ::fail)
     }
 
-    fun onDestroy(){
-        if(!disposables.isDisposed)
-            disposables.dispose()
+    private fun success(posts: List<Post>){
+        _posts.value = posts
+    }
+
+    private fun fail(error: Throwable){
+        _error.value = error
     }
 }
