@@ -2,6 +2,7 @@ package com.acm.workshop.feedme.app.di.component
 
 import com.acm.workshop.feedme.app.di.module.NetworkModule
 import com.acm.workshop.feedme.app.di.module.AppModule
+import com.acm.workshop.feedme.app.di.module.PhotosModule
 import com.acm.workshop.feedme.app.di.module.PostsModule
 import com.acm.workshop.feedme.app.ui.Albums.AlbumsFragment
 import com.acm.workshop.feedme.app.ui.Photos.PhotosFragment
@@ -14,7 +15,8 @@ import javax.inject.Singleton
     modules = [
         AppModule::class,
         NetworkModule::class,
-        PostsModule::class]
+        PostsModule::class,
+        PhotosModule::class]
 )
 interface AppComponent {
 

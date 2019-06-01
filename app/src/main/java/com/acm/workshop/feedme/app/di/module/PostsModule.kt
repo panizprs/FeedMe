@@ -1,10 +1,10 @@
 package com.acm.workshop.feedme.app.di.module
 
-import com.acm.workshop.feedme.data.datasource.PostRemoteDataSource
+import com.acm.workshop.feedme.data.datasource.PostsRemoteDataSource
 import com.acm.workshop.feedme.data.repository.PostsRepositoryImpl
 import com.acm.workshop.feedme.domain.repository.PostsRepository
 import com.acm.workshop.feedme.remote.api.PostApi
-import com.acm.workshop.feedme.remote.datasource.PostRemoteDataSourceImpl
+import com.acm.workshop.feedme.remote.datasource.PostsRemoteDataSourceImpl
 import dagger.Module
 import dagger.Provides
 
@@ -12,13 +12,13 @@ import dagger.Provides
 class PostsModule {
 
     @Provides
-    fun providePostRemoteDataSource(postApi: PostApi) : PostRemoteDataSource{
-        return PostRemoteDataSourceImpl(postApi)
+    fun providePostRemoteDataSource(postApi: PostApi) : PostsRemoteDataSource{
+        return PostsRemoteDataSourceImpl(postApi)
     }
 
 
     @Provides
-    fun providePostsRepository(dataSource: PostRemoteDataSource) : PostsRepository{
+    fun providePostsRepository(dataSource: PostsRemoteDataSource) : PostsRepository{
         return PostsRepositoryImpl(dataSource)
     }
 }

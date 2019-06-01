@@ -64,8 +64,6 @@ class PhotosFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-
-        viewModel.onDestroy()
     }
 
 
