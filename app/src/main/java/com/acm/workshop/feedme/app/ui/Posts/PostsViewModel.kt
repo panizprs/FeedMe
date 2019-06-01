@@ -8,7 +8,7 @@ import com.acm.workshop.feedme.data.model.Post
 import com.acm.workshop.feedme.domain.interactor.GetPostsUseCase
 import javax.inject.Inject
 
-class PostsViewModel @Inject constructor(private val getPostsUseCase: GetPostsUseCase)  : BaseViewModel(){
+class PostsViewModel @Inject constructor(private val getPostsUseCase: GetPostsUseCase) : BaseViewModel(){
 
 
     private val _posts = MutableLiveData<List<Post>>()
