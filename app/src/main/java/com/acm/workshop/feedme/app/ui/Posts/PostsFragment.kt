@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.acm.workshop.feedme.R
-import com.acm.workshop.feedme.app.MyApp
+import com.acm.workshop.feedme.app.FeedMeApp
 import com.acm.workshop.feedme.data.model.Post
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 
-class PostsFragment : Fragment() , PostsContract.View {
+class PostsFragment : DaggerFragment() , PostsContract.View {
 
     @Inject
     lateinit var postsPresenter: PostsPresenter
@@ -32,7 +33,7 @@ class PostsFragment : Fragment() , PostsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        MyApp.component.inject(this)
+//        FeedMeApp.component.inject(this)
     }
 
     override fun onCreateView(

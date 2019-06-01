@@ -1,6 +1,6 @@
 package com.acm.workshop.feedme.app.di.module
 
-import com.acm.workshop.feedme.app.MyApp
+import com.acm.workshop.feedme.app.FeedMeApp
 import com.acm.workshop.feedme.app.executor.BackgroundThread
 import com.acm.workshop.feedme.app.executor.MainThread
 import com.acm.workshop.feedme.domain.executor.PostExecutorThread
@@ -11,11 +11,11 @@ import javax.inject.Singleton
 
 
 @Module
-class AppModule(private val myApp: MyApp){
+class AppModule{
 
     @Provides
     @Singleton
-    fun providesContext() = myApp.applicationContext
+    fun providesContext(feedMeApp: FeedMeApp) = feedMeApp.applicationContext
 
 
     @Provides

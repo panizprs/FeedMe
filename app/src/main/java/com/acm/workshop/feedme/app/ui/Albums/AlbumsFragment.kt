@@ -13,12 +13,13 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 import com.acm.workshop.feedme.R
-import com.acm.workshop.feedme.app.MyApp
+import com.acm.workshop.feedme.app.FeedMeApp
 import com.acm.workshop.feedme.app.ui.Photos.PhotosFragment
 import com.acm.workshop.feedme.data.model.Album
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class AlbumsFragment : Fragment() , OnAlbumClickListener{
+class AlbumsFragment : DaggerFragment() , OnAlbumClickListener{
 
     @Inject
     lateinit var albumsViewModelFactory : AlbumsViewModelFactory
@@ -26,13 +27,6 @@ class AlbumsFragment : Fragment() , OnAlbumClickListener{
 
     val albumsViewModel by lazy {
         ViewModelProviders.of(this, albumsViewModelFactory)[AlbumsViewModel::class.java]
-    }
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        MyApp.component.inject(this)
     }
 
     override fun onCreateView(

@@ -14,11 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 import com.acm.workshop.feedme.R
-import com.acm.workshop.feedme.app.MyApp
+import com.acm.workshop.feedme.app.FeedMeApp
+import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
 
-class PhotosFragment : Fragment() {
+class PhotosFragment : DaggerFragment() {
 
     private var albumId : Int? = null
 
@@ -32,7 +33,7 @@ class PhotosFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        MyApp.component.inject(this)
+//        FeedMeApp.component.inject(this)
 
         albumId = arguments?.getInt(KEY_ALBUM_ID)
     }
