@@ -25,26 +25,14 @@ class PhotosViewModel @Inject constructor(private val photosUseCase: GetPhotosUs
 
 
     fun getPhotos(albumId: Int?){
-//        photosApi.getPhotos()
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({ photos ->
-//                if(albumId == null)
-//                    _photos.value = photos
-//                else
-//                    _photos.value = photos.filter { photo -> photo.albumId != null && photo.albumId == albumId }
-//            },{
-//                println("error $it")
-//            }).addTo(disposables)
-
-        photosUseCase.execute(GetPostsUseCase.None(), ::success , ::fail)
+        photosUseCase.execute(albumId, ::success , ::fail)
     }
 
-    fun success(photos : List<Photo>){
+    private fun success(photos : List<Photo>){
         _photos.value = photos
     }
 
-    fun fail(throwable: Throwable){
+    private fun fail(throwable: Throwable){
         _error.value = throwable
     }
 

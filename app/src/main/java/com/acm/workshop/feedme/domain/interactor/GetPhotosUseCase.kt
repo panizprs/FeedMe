@@ -13,9 +13,19 @@ class GetPhotosUseCase @Inject constructor(
     private val photosRepository: PhotosRepository,
     postExecutorThread: PostExecutorThread,
     useCaseExecutorThread: UseCaseExecutorThread
-) : SingleUseCase<GetPostsUseCase.None, List<Photo>>(postExecutorThread, useCaseExecutorThread) {
-    override fun buildSingle(params: GetPostsUseCase.None): Single<List<Photo>> {
-        return photosRepository.getLatest()
+) : SingleUseCase<Int?, List<Photo>>(postExecutorThread, useCaseExecutorThread) {
+//    params -> albumId
+    override fun buildSingle(params: Int?): Single<List<Photo>> {
+        val photos = photosRepository.getLatest()
+        return if (params == null)
+            photos
+        else {
+            photos.map { photosList ->
+                photosList.filter { photo ->
+                    photo.albumId != null && photo.albumId == params
+                }
+            }
+        }
     }
 
 

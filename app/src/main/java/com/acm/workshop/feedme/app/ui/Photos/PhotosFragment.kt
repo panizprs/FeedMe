@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -53,18 +54,17 @@ class PhotosFragment : Fragment() {
 
         viewModel.getPhotos(albumId)
 
-        viewModel.photos.observe(this@PhotosFragment, Observer {photos->
+        viewModel.photos.observe(this, Observer {photos->
             println("size: ${photos.size}")
-//            println(photos)
             recyclerView.adapter = PhotosAdapter(photos)
+        })
+
+        viewModel.error.observe(this, Observer {throwable ->
+            Toast.makeText(context, throwable.toString(), Toast.LENGTH_LONG).show()
         })
 
     }
 
-
-    override fun onDestroy() {
-        super.onDestroy()
-    }
 
 
     companion object {

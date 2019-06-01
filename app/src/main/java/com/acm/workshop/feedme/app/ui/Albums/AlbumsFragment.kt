@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -53,19 +54,14 @@ class AlbumsFragment : Fragment() , OnAlbumClickListener{
 
         albumsViewModel.albums.observe(this@AlbumsFragment, Observer {albums ->
             println(albums.size)
-            println(albums)
             recyclerView.adapter = AlbumsAdapter(albums, this)
+        })
+        albumsViewModel.error.observe(this, Observer { throwable ->
+            Toast.makeText(context, throwable.toString(), Toast.LENGTH_LONG).show()
         })
 
 
     }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        albumsViewModel.onDestroy()
-    }
-
 
     override fun onAlbumSelected(album: Album) {
         fragmentManager?.beginTransaction()

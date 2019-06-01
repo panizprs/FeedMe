@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
 //            .replace(R.id.content_frame, PostsFragment())
 //            .commit()
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.content_frame, PhotosFragment())
-            .commit()
-
 //        supportFragmentManager.beginTransaction()
-//            .replace(R.id.content_frame, AlbumsFragment())
+//            .replace(R.id.content_frame, PhotosFragment())
 //            .commit()
+
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.content_frame, AlbumsFragment())
+            .commit()
     }
 
 
